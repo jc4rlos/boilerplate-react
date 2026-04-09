@@ -17,24 +17,21 @@ import { Route as errors404RouteImport } from './routes/(errors)/404'
 import { Route as errors403RouteImport } from './routes/(errors)/403'
 import { Route as errors401RouteImport } from './routes/(errors)/401'
 import { Route as authSignUpRouteImport } from './routes/(auth)/sign-up'
-import { Route as authSignIn2RouteImport } from './routes/(auth)/sign-in-2'
 import { Route as authSignInRouteImport } from './routes/(auth)/sign-in'
-import { Route as authOtpRouteImport } from './routes/(auth)/otp'
 import { Route as authForgotPasswordRouteImport } from './routes/(auth)/forgot-password'
 import { Route as authChangePasswordRouteImport } from './routes/(auth)/change-password'
 import { Route as AuthenticatedSettingsRouteRouteImport } from './routes/_authenticated/settings/route'
 import { Route as AuthenticatedSettingsIndexRouteImport } from './routes/_authenticated/settings/index'
-import { Route as AuthenticatedOrdersIndexRouteImport } from './routes/_authenticated/orders/index'
 import { Route as AuthenticatedEmployeesIndexRouteImport } from './routes/_authenticated/employees/index'
-import { Route as AuthenticatedDishesIndexRouteImport } from './routes/_authenticated/dishes/index'
-import { Route as AuthenticatedDailyMenuIndexRouteImport } from './routes/_authenticated/daily-menu/index'
-import { Route as AuthenticatedCategoriesIndexRouteImport } from './routes/_authenticated/categories/index'
+import { Route as AuthenticatedBranchesIndexRouteImport } from './routes/_authenticated/branches/index'
 import { Route as AuthenticatedSettingsPermissionsRouteImport } from './routes/_authenticated/settings/permissions'
 import { Route as AuthenticatedSettingsNotificationsRouteImport } from './routes/_authenticated/settings/notifications'
 import { Route as AuthenticatedSettingsDisplayRouteImport } from './routes/_authenticated/settings/display'
 import { Route as AuthenticatedSettingsAppearanceRouteImport } from './routes/_authenticated/settings/appearance'
 import { Route as AuthenticatedSettingsAccountRouteImport } from './routes/_authenticated/settings/account'
 import { Route as AuthenticatedErrorsErrorRouteImport } from './routes/_authenticated/errors/$error'
+import { Route as AuthenticatedBranchesNewRouteImport } from './routes/_authenticated/branches/new'
+import { Route as AuthenticatedBranchesBranchIdEditRouteImport } from './routes/_authenticated/branches/$branchId/edit'
 
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
@@ -75,19 +72,9 @@ const authSignUpRoute = authSignUpRouteImport.update({
   path: '/sign-up',
   getParentRoute: () => rootRouteImport,
 } as any)
-const authSignIn2Route = authSignIn2RouteImport.update({
-  id: '/(auth)/sign-in-2',
-  path: '/sign-in-2',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const authSignInRoute = authSignInRouteImport.update({
   id: '/(auth)/sign-in',
   path: '/sign-in',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const authOtpRoute = authOtpRouteImport.update({
-  id: '/(auth)/otp',
-  path: '/otp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const authForgotPasswordRoute = authForgotPasswordRouteImport.update({
@@ -112,34 +99,16 @@ const AuthenticatedSettingsIndexRoute =
     path: '/',
     getParentRoute: () => AuthenticatedSettingsRouteRoute,
   } as any)
-const AuthenticatedOrdersIndexRoute =
-  AuthenticatedOrdersIndexRouteImport.update({
-    id: '/orders/',
-    path: '/orders/',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 const AuthenticatedEmployeesIndexRoute =
   AuthenticatedEmployeesIndexRouteImport.update({
     id: '/employees/',
     path: '/employees/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedDishesIndexRoute =
-  AuthenticatedDishesIndexRouteImport.update({
-    id: '/dishes/',
-    path: '/dishes/',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedDailyMenuIndexRoute =
-  AuthenticatedDailyMenuIndexRouteImport.update({
-    id: '/daily-menu/',
-    path: '/daily-menu/',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
-const AuthenticatedCategoriesIndexRoute =
-  AuthenticatedCategoriesIndexRouteImport.update({
-    id: '/categories/',
-    path: '/categories/',
+const AuthenticatedBranchesIndexRoute =
+  AuthenticatedBranchesIndexRouteImport.update({
+    id: '/branches/',
+    path: '/branches/',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
 const AuthenticatedSettingsPermissionsRoute =
@@ -178,40 +147,47 @@ const AuthenticatedErrorsErrorRoute =
     path: '/errors/$error',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedBranchesNewRoute =
+  AuthenticatedBranchesNewRouteImport.update({
+    id: '/branches/new',
+    path: '/branches/new',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedBranchesBranchIdEditRoute =
+  AuthenticatedBranchesBranchIdEditRouteImport.update({
+    id: '/branches/$branchId/edit',
+    path: '/branches/$branchId/edit',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AuthenticatedIndexRoute
   '/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/change-password': typeof authChangePasswordRoute
   '/forgot-password': typeof authForgotPasswordRoute
-  '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
   '/sign-up': typeof authSignUpRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
   '/404': typeof errors404Route
   '/500': typeof errors500Route
   '/503': typeof errors503Route
+  '/branches/new': typeof AuthenticatedBranchesNewRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
-  '/categories/': typeof AuthenticatedCategoriesIndexRoute
-  '/daily-menu/': typeof AuthenticatedDailyMenuIndexRoute
-  '/dishes/': typeof AuthenticatedDishesIndexRoute
+  '/branches/': typeof AuthenticatedBranchesIndexRoute
   '/employees/': typeof AuthenticatedEmployeesIndexRoute
-  '/orders/': typeof AuthenticatedOrdersIndexRoute
   '/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
 }
 export interface FileRoutesByTo {
   '/change-password': typeof authChangePasswordRoute
   '/forgot-password': typeof authForgotPasswordRoute
-  '/otp': typeof authOtpRoute
   '/sign-in': typeof authSignInRoute
-  '/sign-in-2': typeof authSignIn2Route
   '/sign-up': typeof authSignUpRoute
   '/401': typeof errors401Route
   '/403': typeof errors403Route
@@ -219,18 +195,17 @@ export interface FileRoutesByTo {
   '/500': typeof errors500Route
   '/503': typeof errors503Route
   '/': typeof AuthenticatedIndexRoute
+  '/branches/new': typeof AuthenticatedBranchesNewRoute
   '/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
-  '/categories': typeof AuthenticatedCategoriesIndexRoute
-  '/daily-menu': typeof AuthenticatedDailyMenuIndexRoute
-  '/dishes': typeof AuthenticatedDishesIndexRoute
+  '/branches': typeof AuthenticatedBranchesIndexRoute
   '/employees': typeof AuthenticatedEmployeesIndexRoute
-  '/orders': typeof AuthenticatedOrdersIndexRoute
   '/settings': typeof AuthenticatedSettingsIndexRoute
+  '/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -238,9 +213,7 @@ export interface FileRoutesById {
   '/_authenticated/settings': typeof AuthenticatedSettingsRouteRouteWithChildren
   '/(auth)/change-password': typeof authChangePasswordRoute
   '/(auth)/forgot-password': typeof authForgotPasswordRoute
-  '/(auth)/otp': typeof authOtpRoute
   '/(auth)/sign-in': typeof authSignInRoute
-  '/(auth)/sign-in-2': typeof authSignIn2Route
   '/(auth)/sign-up': typeof authSignUpRoute
   '/(errors)/401': typeof errors401Route
   '/(errors)/403': typeof errors403Route
@@ -248,18 +221,17 @@ export interface FileRoutesById {
   '/(errors)/500': typeof errors500Route
   '/(errors)/503': typeof errors503Route
   '/_authenticated/': typeof AuthenticatedIndexRoute
+  '/_authenticated/branches/new': typeof AuthenticatedBranchesNewRoute
   '/_authenticated/errors/$error': typeof AuthenticatedErrorsErrorRoute
   '/_authenticated/settings/account': typeof AuthenticatedSettingsAccountRoute
   '/_authenticated/settings/appearance': typeof AuthenticatedSettingsAppearanceRoute
   '/_authenticated/settings/display': typeof AuthenticatedSettingsDisplayRoute
   '/_authenticated/settings/notifications': typeof AuthenticatedSettingsNotificationsRoute
   '/_authenticated/settings/permissions': typeof AuthenticatedSettingsPermissionsRoute
-  '/_authenticated/categories/': typeof AuthenticatedCategoriesIndexRoute
-  '/_authenticated/daily-menu/': typeof AuthenticatedDailyMenuIndexRoute
-  '/_authenticated/dishes/': typeof AuthenticatedDishesIndexRoute
+  '/_authenticated/branches/': typeof AuthenticatedBranchesIndexRoute
   '/_authenticated/employees/': typeof AuthenticatedEmployeesIndexRoute
-  '/_authenticated/orders/': typeof AuthenticatedOrdersIndexRoute
   '/_authenticated/settings/': typeof AuthenticatedSettingsIndexRoute
+  '/_authenticated/branches/$branchId/edit': typeof AuthenticatedBranchesBranchIdEditRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -268,34 +240,29 @@ export interface FileRouteTypes {
     | '/settings'
     | '/change-password'
     | '/forgot-password'
-    | '/otp'
     | '/sign-in'
-    | '/sign-in-2'
     | '/sign-up'
     | '/401'
     | '/403'
     | '/404'
     | '/500'
     | '/503'
+    | '/branches/new'
     | '/errors/$error'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/permissions'
-    | '/categories/'
-    | '/daily-menu/'
-    | '/dishes/'
+    | '/branches/'
     | '/employees/'
-    | '/orders/'
     | '/settings/'
+    | '/branches/$branchId/edit'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/change-password'
     | '/forgot-password'
-    | '/otp'
     | '/sign-in'
-    | '/sign-in-2'
     | '/sign-up'
     | '/401'
     | '/403'
@@ -303,27 +270,24 @@ export interface FileRouteTypes {
     | '/500'
     | '/503'
     | '/'
+    | '/branches/new'
     | '/errors/$error'
     | '/settings/account'
     | '/settings/appearance'
     | '/settings/display'
     | '/settings/notifications'
     | '/settings/permissions'
-    | '/categories'
-    | '/daily-menu'
-    | '/dishes'
+    | '/branches'
     | '/employees'
-    | '/orders'
     | '/settings'
+    | '/branches/$branchId/edit'
   id:
     | '__root__'
     | '/_authenticated'
     | '/_authenticated/settings'
     | '/(auth)/change-password'
     | '/(auth)/forgot-password'
-    | '/(auth)/otp'
     | '/(auth)/sign-in'
-    | '/(auth)/sign-in-2'
     | '/(auth)/sign-up'
     | '/(errors)/401'
     | '/(errors)/403'
@@ -331,27 +295,24 @@ export interface FileRouteTypes {
     | '/(errors)/500'
     | '/(errors)/503'
     | '/_authenticated/'
+    | '/_authenticated/branches/new'
     | '/_authenticated/errors/$error'
     | '/_authenticated/settings/account'
     | '/_authenticated/settings/appearance'
     | '/_authenticated/settings/display'
     | '/_authenticated/settings/notifications'
     | '/_authenticated/settings/permissions'
-    | '/_authenticated/categories/'
-    | '/_authenticated/daily-menu/'
-    | '/_authenticated/dishes/'
+    | '/_authenticated/branches/'
     | '/_authenticated/employees/'
-    | '/_authenticated/orders/'
     | '/_authenticated/settings/'
+    | '/_authenticated/branches/$branchId/edit'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   authChangePasswordRoute: typeof authChangePasswordRoute
   authForgotPasswordRoute: typeof authForgotPasswordRoute
-  authOtpRoute: typeof authOtpRoute
   authSignInRoute: typeof authSignInRoute
-  authSignIn2Route: typeof authSignIn2Route
   authSignUpRoute: typeof authSignUpRoute
   errors401Route: typeof errors401Route
   errors403Route: typeof errors403Route
@@ -418,25 +379,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof authSignUpRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/(auth)/sign-in-2': {
-      id: '/(auth)/sign-in-2'
-      path: '/sign-in-2'
-      fullPath: '/sign-in-2'
-      preLoaderRoute: typeof authSignIn2RouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/(auth)/sign-in': {
       id: '/(auth)/sign-in'
       path: '/sign-in'
       fullPath: '/sign-in'
       preLoaderRoute: typeof authSignInRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/(auth)/otp': {
-      id: '/(auth)/otp'
-      path: '/otp'
-      fullPath: '/otp'
-      preLoaderRoute: typeof authOtpRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/(auth)/forgot-password': {
@@ -467,13 +414,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedSettingsIndexRouteImport
       parentRoute: typeof AuthenticatedSettingsRouteRoute
     }
-    '/_authenticated/orders/': {
-      id: '/_authenticated/orders/'
-      path: '/orders'
-      fullPath: '/orders/'
-      preLoaderRoute: typeof AuthenticatedOrdersIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
     '/_authenticated/employees/': {
       id: '/_authenticated/employees/'
       path: '/employees'
@@ -481,25 +421,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedEmployeesIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/dishes/': {
-      id: '/_authenticated/dishes/'
-      path: '/dishes'
-      fullPath: '/dishes/'
-      preLoaderRoute: typeof AuthenticatedDishesIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/daily-menu/': {
-      id: '/_authenticated/daily-menu/'
-      path: '/daily-menu'
-      fullPath: '/daily-menu/'
-      preLoaderRoute: typeof AuthenticatedDailyMenuIndexRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/categories/': {
-      id: '/_authenticated/categories/'
-      path: '/categories'
-      fullPath: '/categories/'
-      preLoaderRoute: typeof AuthenticatedCategoriesIndexRouteImport
+    '/_authenticated/branches/': {
+      id: '/_authenticated/branches/'
+      path: '/branches'
+      fullPath: '/branches/'
+      preLoaderRoute: typeof AuthenticatedBranchesIndexRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/settings/permissions': {
@@ -544,6 +470,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedErrorsErrorRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/branches/new': {
+      id: '/_authenticated/branches/new'
+      path: '/branches/new'
+      fullPath: '/branches/new'
+      preLoaderRoute: typeof AuthenticatedBranchesNewRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/branches/$branchId/edit': {
+      id: '/_authenticated/branches/$branchId/edit'
+      path: '/branches/$branchId/edit'
+      fullPath: '/branches/$branchId/edit'
+      preLoaderRoute: typeof AuthenticatedBranchesBranchIdEditRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -576,23 +516,22 @@ const AuthenticatedSettingsRouteRouteWithChildren =
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedSettingsRouteRoute: typeof AuthenticatedSettingsRouteRouteWithChildren
   AuthenticatedIndexRoute: typeof AuthenticatedIndexRoute
+  AuthenticatedBranchesNewRoute: typeof AuthenticatedBranchesNewRoute
   AuthenticatedErrorsErrorRoute: typeof AuthenticatedErrorsErrorRoute
-  AuthenticatedCategoriesIndexRoute: typeof AuthenticatedCategoriesIndexRoute
-  AuthenticatedDailyMenuIndexRoute: typeof AuthenticatedDailyMenuIndexRoute
-  AuthenticatedDishesIndexRoute: typeof AuthenticatedDishesIndexRoute
+  AuthenticatedBranchesIndexRoute: typeof AuthenticatedBranchesIndexRoute
   AuthenticatedEmployeesIndexRoute: typeof AuthenticatedEmployeesIndexRoute
-  AuthenticatedOrdersIndexRoute: typeof AuthenticatedOrdersIndexRoute
+  AuthenticatedBranchesBranchIdEditRoute: typeof AuthenticatedBranchesBranchIdEditRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedSettingsRouteRoute: AuthenticatedSettingsRouteRouteWithChildren,
   AuthenticatedIndexRoute: AuthenticatedIndexRoute,
+  AuthenticatedBranchesNewRoute: AuthenticatedBranchesNewRoute,
   AuthenticatedErrorsErrorRoute: AuthenticatedErrorsErrorRoute,
-  AuthenticatedCategoriesIndexRoute: AuthenticatedCategoriesIndexRoute,
-  AuthenticatedDailyMenuIndexRoute: AuthenticatedDailyMenuIndexRoute,
-  AuthenticatedDishesIndexRoute: AuthenticatedDishesIndexRoute,
+  AuthenticatedBranchesIndexRoute: AuthenticatedBranchesIndexRoute,
   AuthenticatedEmployeesIndexRoute: AuthenticatedEmployeesIndexRoute,
-  AuthenticatedOrdersIndexRoute: AuthenticatedOrdersIndexRoute,
+  AuthenticatedBranchesBranchIdEditRoute:
+    AuthenticatedBranchesBranchIdEditRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
@@ -602,9 +541,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   authChangePasswordRoute: authChangePasswordRoute,
   authForgotPasswordRoute: authForgotPasswordRoute,
-  authOtpRoute: authOtpRoute,
   authSignInRoute: authSignInRoute,
-  authSignIn2Route: authSignIn2Route,
   authSignUpRoute: authSignUpRoute,
   errors401Route: errors401Route,
   errors403Route: errors403Route,

@@ -1,37 +1,35 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button } from '@boilerplate/ui'
 import {
+  Button,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-} from '@boilerplate/ui'
-import {
   Form,
   FormControl,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
-} from '@boilerplate/ui'
-import { Input } from '@boilerplate/ui'
-import {
+  Input,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Switch,
 } from '@boilerplate/ui'
-import { Switch } from '@boilerplate/ui'
 import {
   employeeFormSchema,
   type EmployeeFormValues,
+  employeeRoleLabels,
+  employeeRoles,
+  type Employee,
 } from '../data/schema'
-import { employeeRoleLabels, employeeRoles, type Employee } from '../data/schema'
 import {
   useCreateEmployee,
   useUpdateEmployee,
@@ -147,13 +145,15 @@ export const EmployeesActionDialog = ({
         onOpenChange(state)
       }}
     >
-      <DialogContent className='sm:max-w-lg'>
+      <DialogContent className='sm:max-w-lg' dismissible={false}>
         <DialogHeader className='text-start'>
           <DialogTitle>
             {isEdit ? 'Editar Empleado' : 'Agregar Nuevo Empleado'}
           </DialogTitle>
           <DialogDescription>
-            {isEdit ? 'Actualiza los datos del empleado. ' : 'Registra un nuevo empleado. '}
+            {isEdit
+              ? 'Actualiza los datos del empleado. '
+              : 'Registra un nuevo empleado. '}
             Haz clic en guardar cuando termines.
           </DialogDescription>
         </DialogHeader>
@@ -169,7 +169,9 @@ export const EmployeesActionDialog = ({
               name='branchId'
               render={({ field }) => (
                 <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                  <FormLabel className='col-span-2 text-end'>Sucursal</FormLabel>
+                  <FormLabel className='col-span-2 text-end'>
+                    Sucursal
+                  </FormLabel>
                   <Select
                     onValueChange={(v) => field.onChange(Number(v))}
                     value={field.value ? String(field.value) : ''}
@@ -216,7 +218,9 @@ export const EmployeesActionDialog = ({
               name='lastName'
               render={({ field }) => (
                 <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                  <FormLabel className='col-span-2 text-end'>Apellido</FormLabel>
+                  <FormLabel className='col-span-2 text-end'>
+                    Apellido
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='Pérez'
@@ -235,7 +239,9 @@ export const EmployeesActionDialog = ({
               name='documentNumber'
               render={({ field }) => (
                 <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                  <FormLabel className='col-span-2 text-end'>Documento</FormLabel>
+                  <FormLabel className='col-span-2 text-end'>
+                    Documento
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='12345678'
@@ -279,7 +285,9 @@ export const EmployeesActionDialog = ({
               name='phone'
               render={({ field }) => (
                 <FormItem className='grid grid-cols-6 items-center space-y-0 gap-x-4 gap-y-1'>
-                  <FormLabel className='col-span-2 text-end'>Teléfono</FormLabel>
+                  <FormLabel className='col-span-2 text-end'>
+                    Teléfono
+                  </FormLabel>
                   <FormControl>
                     <Input
                       placeholder='+54 9 11 1234 5678'
@@ -321,11 +329,7 @@ export const EmployeesActionDialog = ({
                     Fecha contratación
                   </FormLabel>
                   <FormControl>
-                    <Input
-                      type='date'
-                      className='col-span-4'
-                      {...field}
-                    />
+                    <Input type='date' className='col-span-4' {...field} />
                   </FormControl>
                   <FormMessage className='col-span-4 col-start-3' />
                 </FormItem>

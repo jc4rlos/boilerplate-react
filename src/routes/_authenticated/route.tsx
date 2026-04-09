@@ -24,15 +24,19 @@ export const Route = createFileRoute('/_authenticated')({
 
     try {
       const employee = await getEmployeeByUserId(session.user.id)
-      auth.setUser({
+      const user: Parameters<typeof auth.setUser>[0] = {
         employeeId: employee.id,
         email: session.user.email ?? '',
         role: employee.role,
         exp: (session.expires_at ?? 0) * 1000,
-      })
-      auth.setAccessToken(session.access_token)
+      }
 
-      const menuItems = await getMenuItemsForRole(employee.role)
+      const [menuItems] = await Promise.all([
+        getMenuItemsForRole(employee.role),
+        Promise.resolve(auth.setUser(user)),
+        Promise.resolve(auth.setAccessToken(session.access_token)),
+      ])
+
       auth.setMenuItems(menuItems)
     } catch {
       throw redirect({ to: '/sign-in' })

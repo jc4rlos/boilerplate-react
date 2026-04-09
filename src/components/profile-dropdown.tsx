@@ -1,8 +1,4 @@
 import { Link } from '@tanstack/react-router'
-import useDialogState from '@/hooks/use-dialog-state'
-import { useAuthStore } from '@/stores/auth-store'
-import { Avatar, AvatarFallback } from '@boilerplate/ui'
-import { Button } from '@boilerplate/ui'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +8,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
+  Avatar,
+  AvatarFallback,
+  Button,
 } from '@boilerplate/ui'
+import { useAuthStore } from '@/stores/auth-store'
+import useDialogState from '@/hooks/use-dialog-state'
 import { SignOutDialog } from '@/components/sign-out-dialog'
 
 export function ProfileDropdown() {
@@ -59,7 +60,9 @@ export function ProfileDropdown() {
           <DropdownMenuSeparator />
           <DropdownMenuItem variant='destructive' onClick={() => setOpen(true)}>
             Cerrar sesión
-            <DropdownMenuShortcut className='text-current'>⇧⌘Q</DropdownMenuShortcut>
+            <DropdownMenuShortcut className='text-current'>
+              ⇧⌘Q
+            </DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

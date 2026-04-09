@@ -1,7 +1,4 @@
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { toast } from 'sonner'
-import { getAllMenuItemsWithPermissions, upsertRolePermission } from './data/menu-service'
-import { Checkbox } from '@boilerplate/ui'
 import {
   Table,
   TableBody,
@@ -9,7 +6,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
+  Checkbox,
 } from '@boilerplate/ui'
+import { toast } from 'sonner'
+import {
+  getAllMenuItemsWithPermissions,
+  upsertRolePermission,
+} from './data/menu-service'
 
 const ROLES: { value: string; label: string }[] = [
   { value: 'ADMIN', label: 'Admin' },
@@ -28,18 +31,27 @@ export default function PermissionsPage() {
   })
 
   const { mutate: toggle } = useMutation({
-    mutationFn: ({ menuItemId, role, enabled }: { menuItemId: number; role: string; enabled: boolean }) =>
-      upsertRolePermission(menuItemId, role, enabled),
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['menu-items-permissions'] }),
+    mutationFn: ({
+      menuItemId,
+      role,
+      enabled,
+    }: {
+      menuItemId: number
+      role: string
+      enabled: boolean
+    }) => upsertRolePermission(menuItemId, role, enabled),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ['menu-items-permissions'] }),
     onError: () => toast.error('Error al actualizar el permiso.'),
   })
 
-  if (isLoading) return <div className='p-6 text-sm text-muted-foreground'>Cargando...</div>
+  if (isLoading)
+    return <div className='p-6 text-sm text-muted-foreground'>Cargando...</div>
 
   return (
-    <div className='p-6 space-y-4'>
+    <div className='space-y-4 p-6'>
       <h1 className='text-xl font-semibold'>Permisos de Menú</h1>
-      <div className='rounded-md border overflow-auto'>
+      <div className='overflow-auto rounded-md border'>
         <Table>
           <TableHeader>
             <TableRow>
@@ -56,16 +68,24 @@ export default function PermissionsPage() {
             {items.map((item) => (
               <TableRow key={item.id}>
                 <TableCell className='font-medium'>{item.label}</TableCell>
-                <TableCell className='text-muted-foreground text-sm'>{item.path}</TableCell>
+                <TableCell className='text-sm text-muted-foreground'>
+                  {item.path}
+                </TableCell>
                 {ROLES.map((role) => {
-                  const perm = item.permissions.find((p) => p.role === role.value)
+                  const perm = item.permissions.find(
+                    (p) => p.role === role.value
+                  )
                   const enabled = perm?.enabled ?? false
                   return (
                     <TableCell key={role.value} className='text-center'>
                       <Checkbox
                         checked={enabled}
                         onCheckedChange={(checked) =>
-                          toggle({ menuItemId: item.id, role: role.value, enabled: !!checked })
+                          toggle({
+                            menuItemId: item.id,
+                            role: role.value,
+                            enabled: !!checked,
+                          })
                         }
                       />
                     </TableCell>

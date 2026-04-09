@@ -1,6 +1,3 @@
-import { useAuthStore } from '@/stores/auth-store'
-import { resolveIcon } from '@/lib/icon-map'
-import { useLayout } from '@/context/layout-provider'
 import {
   Sidebar,
   SidebarContent,
@@ -8,6 +5,9 @@ import {
   SidebarHeader,
   SidebarRail,
 } from '@boilerplate/ui'
+import { useAuthStore } from '@/stores/auth-store'
+import { resolveIcon } from '@/lib/icon-map'
+import { useLayout } from '@/context/layout-provider'
 import { sidebarData } from './data/sidebar-data'
 import { NavGroup } from './nav-group'
 import { NavUser } from './nav-user'
@@ -44,6 +44,9 @@ function useDynamicNavGroup(): NavGroupType | null {
 export function AppSidebar() {
   const { collapsible, variant } = useLayout()
   const dynamicGroup = useDynamicNavGroup()
+  const { auth } = useAuthStore()
+  const email = auth.user?.email ?? ''
+  const initials = email.slice(0, 2).toUpperCase()
 
   return (
     <Sidebar collapsible={collapsible} variant={variant}>
@@ -57,7 +60,13 @@ export function AppSidebar() {
         ))}
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={sidebarData.user} />
+        <NavUser
+          user={{
+            name: auth.user?.role ?? 'Usuario',
+            email: email,
+            avatar: initials,
+          }}
+        />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
