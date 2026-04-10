@@ -6,8 +6,8 @@ import {
   ShieldCheck,
   UtensilsCrossed,
   Users,
+  type LucideIcon,
 } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
 
 const ICON_MAP: Record<string, LucideIcon> = {
   LayoutDashboard,

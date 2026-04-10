@@ -2,23 +2,7 @@ import * as React from 'react'
 import { CheckIcon, PlusCircledIcon } from '@radix-ui/react-icons'
 import { type Column } from '@tanstack/react-table'
 import { cn } from '@/lib/utils'
-import { Badge } from '@boilerplate/ui'
-import { Button } from '@boilerplate/ui'
-import {
-  Command,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from '@boilerplate/ui'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from '@boilerplate/ui'
-import { Separator } from '@boilerplate/ui'
+import { Badge, Button, Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, Popover, PopoverContent, PopoverTrigger, Separator } from '@boilerplate/ui'
 
 type DataTableFacetedFilterProps<TData, TValue> = {
   column?: Column<TData, TValue>

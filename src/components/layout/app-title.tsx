@@ -1,13 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import { Menu, X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import {
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  useSidebar,
-} from '@boilerplate/ui'
-import { Button } from '@boilerplate/ui'
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar, Button } from '@boilerplate/ui'
 
 export function AppTitle() {
   const { setOpenMobile } = useSidebar()

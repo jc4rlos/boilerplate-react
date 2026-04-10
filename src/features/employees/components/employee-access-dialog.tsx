@@ -5,26 +5,10 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { AlertTriangle, KeyRound, Loader2, ShieldOff, UserCheck } from 'lucide-react'
 import { toast } from 'sonner'
-import { Alert, AlertDescription } from '@boilerplate/ui'
-import { Button } from '@boilerplate/ui'
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-} from '@boilerplate/ui'
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@boilerplate/ui'
-import { Input } from '@boilerplate/ui'
+import { Alert, AlertDescription, Button, Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input, Separator } from '@boilerplate/ui'
+
 import { PasswordInput } from '@/components/password-input'
-import { Separator } from '@boilerplate/ui'
+
 import { isAdminConfigured } from '@/lib/supabase-admin'
 import { linkEmployeeAccess, unlinkEmployeeAccess } from '../data/employees-service'
 import { type Employee } from '../data/schema'

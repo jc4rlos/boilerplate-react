@@ -1,12 +1,4 @@
-import { Skeleton } from '@boilerplate/ui'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@boilerplate/ui'
+import { Skeleton, Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@boilerplate/ui'
 
 const SKELETON_ROWS = 8
 

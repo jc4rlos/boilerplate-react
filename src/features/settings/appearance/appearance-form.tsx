@@ -7,17 +7,7 @@ import { showSubmittedData } from '@/lib/show-submitted-data'
 import { cn } from '@/lib/utils'
 import { useFont } from '@/context/font-provider'
 import { useTheme } from '@/context/theme-provider'
-import { Button, buttonVariants } from '@boilerplate/ui'
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@boilerplate/ui'
-import { RadioGroup, RadioGroupItem } from '@boilerplate/ui'
+import { Button, buttonVariants, Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage, RadioGroup, RadioGroupItem } from '@boilerplate/ui'
 
 const appearanceFormSchema = z.object({
   theme: z.enum(['light', 'dark']),
