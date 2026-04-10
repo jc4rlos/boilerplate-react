@@ -2,10 +2,9 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link } from '@tanstack/react-router'
-import { showSubmittedData } from '@/lib/show-submitted-data'
-import { Button } from '@boilerplate/ui'
-import { Checkbox } from '@boilerplate/ui'
 import {
+  Button,
+  Checkbox,
   Form,
   FormControl,
   FormDescription,
@@ -13,9 +12,11 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  RadioGroup,
+  RadioGroupItem,
+  Switch,
 } from '@boilerplate/ui'
-import { RadioGroup, RadioGroupItem } from '@boilerplate/ui'
-import { Switch } from '@boilerplate/ui'
+import { showSubmittedData } from '@/lib/show-submitted-data'
 
 const notificationsFormSchema = z.object({
   type: z.enum(['all', 'mentions', 'none'], {

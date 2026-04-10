@@ -1,14 +1,14 @@
 import { useEffect } from 'react'
-import { Check, Moon, Sun } from 'lucide-react'
-import { cn } from '@/lib/utils'
-import { useTheme } from '@/context/theme-provider'
-import { Button } from '@boilerplate/ui'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { Check, Moon, Sun } from 'lucide-react'
+import { cn } from '@/lib/utils'
+import { useTheme } from '@/context/theme-provider'
 
 export function ThemeSwitch() {
   const { theme, setTheme } = useTheme()

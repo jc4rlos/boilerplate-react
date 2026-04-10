@@ -59,7 +59,7 @@ export const BranchForm = ({
             control={form.control}
             name='isActive'
             render={({ field }) => (
-              <FormItem className='items-start flex h-11 flex-row justify-between self-end rounded-lg border p-3 shadow-sm'>
+              <FormItem className='flex h-11 flex-row items-start justify-between self-end rounded-lg border p-3 shadow-sm'>
                 <FormLabel>Activo</FormLabel>
                 <FormControl>
                   <Switch

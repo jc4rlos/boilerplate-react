@@ -1,7 +1,14 @@
 import { flexRender } from '@tanstack/react-table'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@boilerplate/ui'
 import { cn } from '@/lib/utils'
 import { type NavigateFn } from '@/hooks/use-table-url-state'
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@boilerplate/ui'
 import { DataTablePagination } from '@/components/data-table'
 import { type Branch } from '../data/schema'
 import { useBranchesTable } from '../hooks/use-branches-table'
@@ -17,9 +24,21 @@ type BranchesTableProps = {
   onDelete: (branch: Branch) => void
 }
 
-export const BranchesTable = ({ data, total, search, navigate, onDelete }: BranchesTableProps) => {
-  const { table, nameInput, setNameInput, handleSearch, handleReset, isFiltered } =
-    useBranchesTable({ data, total, search, navigate, onDelete })
+export const BranchesTable = ({
+  data,
+  total,
+  search,
+  navigate,
+  onDelete,
+}: BranchesTableProps) => {
+  const {
+    table,
+    nameInput,
+    setNameInput,
+    handleSearch,
+    handleReset,
+    isFiltered,
+  } = useBranchesTable({ data, total, search, navigate, onDelete })
 
   return (
     <div className='flex flex-1 flex-col gap-4'>
@@ -49,7 +68,10 @@ export const BranchesTable = ({ data, total, search, navigate, onDelete }: Branc
                   >
                     {header.isPlaceholder
                       ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -72,7 +94,10 @@ export const BranchesTable = ({ data, total, search, navigate, onDelete }: Branc
                         cell.column.columnDef.meta?.tdClassName
                       )}
                     >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>

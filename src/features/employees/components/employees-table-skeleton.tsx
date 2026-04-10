@@ -1,5 +1,5 @@
-import { Skeleton } from '@boilerplate/ui'
 import {
+  Skeleton,
   Table,
   TableBody,
   TableCell,

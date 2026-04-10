@@ -1,7 +1,6 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { type Table } from '@tanstack/react-table'
-import { Button } from '@boilerplate/ui'
-import { Input } from '@boilerplate/ui'
+import { Button, Input } from '@boilerplate/ui'
 import { DataTableFacetedFilter } from './faceted-filter'
 import { DataTableViewOptions } from './view-options'
 

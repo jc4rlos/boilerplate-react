@@ -9,7 +9,10 @@ export type AuthEmployee = {
 }
 
 export const signInWithPassword = async (email: string, password: string) => {
-  const { data, error } = await supabase.auth.signInWithPassword({ email, password })
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email,
+    password,
+  })
   if (error) throw new Error(error.message)
   if (!data.session) throw new Error('No se pudo iniciar sesión.')
   return data.session
@@ -30,7 +33,9 @@ export const updatePassword = async (newPassword: string): Promise<void> => {
   if (error) throw new Error(error.message)
 }
 
-export const getEmployeeByUserId = async (userId: string): Promise<AuthEmployee> => {
+export const getEmployeeByUserId = async (
+  userId: string
+): Promise<AuthEmployee> => {
   const { data, error } = await supabase
     .from('employee')
     .select('id, role, first_name, last_name')
@@ -40,7 +45,9 @@ export const getEmployeeByUserId = async (userId: string): Promise<AuthEmployee>
 
   if (error) throw new Error(`Error al obtener empleado: ${error.message}`)
   if (!data)
-    throw new Error('Este usuario no tiene un empleado asociado. Contacta al administrador.')
+    throw new Error(
+      'Este usuario no tiene un empleado asociado. Contacta al administrador.'
+    )
 
   return {
     id: data.id,
@@ -54,7 +61,8 @@ export const createAuthUser = async (
   email: string,
   tempPassword: string
 ): Promise<string> => {
-  if (!supabaseAdmin) throw new Error('La clave de servicio no está configurada.')
+  if (!supabaseAdmin)
+    throw new Error('La clave de servicio no está configurada.')
 
   const { data, error } = await supabaseAdmin.auth.admin.createUser({
     email,
@@ -68,7 +76,8 @@ export const createAuthUser = async (
 }
 
 export const deleteAuthUser = async (userId: string): Promise<void> => {
-  if (!supabaseAdmin) throw new Error('La clave de servicio no está configurada.')
+  if (!supabaseAdmin)
+    throw new Error('La clave de servicio no está configurada.')
   const { error } = await supabaseAdmin.auth.admin.deleteUser(userId)
   if (error) throw new Error(error.message)
 }

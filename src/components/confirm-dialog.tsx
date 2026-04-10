@@ -1,4 +1,3 @@
-import { cn } from '@/lib/utils'
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -7,8 +6,9 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
+  Button,
 } from '@boilerplate/ui'
-import { Button } from '@boilerplate/ui'
+import { cn } from '@/lib/utils'
 
 type ConfirmDialogProps = {
   open: boolean

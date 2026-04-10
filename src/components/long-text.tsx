@@ -1,16 +1,14 @@
 import { useRef, useState } from 'react'
-import { cn } from '@/lib/utils'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@boilerplate/ui'
-import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@boilerplate/ui'
+import { cn } from '@/lib/utils'
 
 type LongTextProps = {
   children: React.ReactNode

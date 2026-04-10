@@ -1,8 +1,7 @@
 import { DotsHorizontalIcon } from '@radix-ui/react-icons'
 import { type Row } from '@tanstack/react-table'
-import { KeyRound, Pencil, Trash2 } from 'lucide-react'
-import { Button } from '@boilerplate/ui'
 import {
+  Button,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
@@ -10,6 +9,7 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@boilerplate/ui'
+import { KeyRound, Pencil, Trash2 } from 'lucide-react'
 import { type Employee } from '../data/schema'
 import { useEmployeesContext } from './employees-provider'
 
@@ -21,7 +21,10 @@ export const DataTableRowActions = ({ row }: Props) => {
   return (
     <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
-        <Button variant='ghost' className='flex h-8 w-8 p-0 data-[state=open]:bg-muted'>
+        <Button
+          variant='ghost'
+          className='flex h-8 w-8 p-0 data-[state=open]:bg-muted'
+        >
           <DotsHorizontalIcon className='h-4 w-4' />
           <span className='sr-only'>Open menu</span>
         </Button>
@@ -34,7 +37,9 @@ export const DataTableRowActions = ({ row }: Props) => {
           }}
         >
           Editar
-          <DropdownMenuShortcut><Pencil size={16} /></DropdownMenuShortcut>
+          <DropdownMenuShortcut>
+            <Pencil size={16} />
+          </DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={() => {
@@ -43,7 +48,9 @@ export const DataTableRowActions = ({ row }: Props) => {
           }}
         >
           Gestionar acceso
-          <DropdownMenuShortcut><KeyRound size={16} /></DropdownMenuShortcut>
+          <DropdownMenuShortcut>
+            <KeyRound size={16} />
+          </DropdownMenuShortcut>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem
@@ -54,7 +61,9 @@ export const DataTableRowActions = ({ row }: Props) => {
           }}
         >
           Eliminar
-          <DropdownMenuShortcut><Trash2 size={16} /></DropdownMenuShortcut>
+          <DropdownMenuShortcut>
+            <Trash2 size={16} />
+          </DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

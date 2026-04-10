@@ -2,10 +2,8 @@ import { z } from 'zod'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Link } from '@tanstack/react-router'
-import { showSubmittedData } from '@/lib/show-submitted-data'
-import { cn } from '@/lib/utils'
-import { Button } from '@boilerplate/ui'
 import {
+  Button,
   Form,
   FormControl,
   FormDescription,
@@ -13,16 +11,16 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from '@boilerplate/ui'
-import { Input } from '@boilerplate/ui'
-import {
+  Input,
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
+  Textarea,
 } from '@boilerplate/ui'
-import { Textarea } from '@boilerplate/ui'
+import { showSubmittedData } from '@/lib/show-submitted-data'
+import { cn } from '@/lib/utils'
 
 const profileFormSchema = z.object({
   username: z

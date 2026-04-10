@@ -1,5 +1,5 @@
-import { UserPlus } from 'lucide-react'
 import { Button } from '@boilerplate/ui'
+import { UserPlus } from 'lucide-react'
 import { useEmployeesContext } from './employees-provider'
 
 export const EmployeesPrimaryButtons = () => {

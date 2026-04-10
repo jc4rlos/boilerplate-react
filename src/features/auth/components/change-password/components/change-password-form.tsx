@@ -3,8 +3,8 @@ import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useNavigate } from '@tanstack/react-router'
-import { Button } from '@boilerplate/ui'
 import {
+  Button,
   Form,
   FormControl,
   FormField,

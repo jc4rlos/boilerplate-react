@@ -26,13 +26,24 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('/node_modules/react/') || id.includes('/node_modules/react-dom/') || id.includes('/node_modules/scheduler/')) {
+          if (
+            id.includes('/node_modules/react/') ||
+            id.includes('/node_modules/react-dom/') ||
+            id.includes('/node_modules/scheduler/')
+          ) {
             return 'vendor-react'
           }
-          if (id.includes('@tanstack/react-router') || id.includes('@tanstack/router-core') || id.includes('@tanstack/history')) {
+          if (
+            id.includes('@tanstack/react-router') ||
+            id.includes('@tanstack/router-core') ||
+            id.includes('@tanstack/history')
+          ) {
             return 'vendor-router'
           }
-          if (id.includes('@tanstack/react-query') || id.includes('@tanstack/query-core')) {
+          if (
+            id.includes('@tanstack/react-query') ||
+            id.includes('@tanstack/query-core')
+          ) {
             return 'vendor-query'
           }
           if (id.includes('@tanstack/react-table')) {
@@ -50,7 +61,11 @@ export default defineConfig({
           if (id.includes('/node_modules/lucide-react/')) {
             return 'vendor-icons'
           }
-          if (id.includes('/node_modules/zod/') || id.includes('/node_modules/react-hook-form/') || id.includes('@hookform/')) {
+          if (
+            id.includes('/node_modules/zod/') ||
+            id.includes('/node_modules/react-hook-form/') ||
+            id.includes('@hookform/')
+          ) {
             return 'vendor-forms'
           }
         },

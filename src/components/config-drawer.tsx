@@ -1,5 +1,16 @@
 import { type SVGProps } from 'react'
 import { Root as Radio, Item } from '@radix-ui/react-radio-group'
+import {
+  Button,
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+  useSidebar,
+} from '@boilerplate/ui'
 import { CircleCheck, RotateCcw, Settings } from 'lucide-react'
 import { IconDir } from '@/assets/custom/icon-dir'
 import { IconLayoutCompact } from '@/assets/custom/icon-layout-compact'
@@ -15,17 +26,6 @@ import { cn } from '@/lib/utils'
 import { useDirection } from '@/context/direction-provider'
 import { type Collapsible, useLayout } from '@/context/layout-provider'
 import { useTheme } from '@/context/theme-provider'
-import { Button } from '@boilerplate/ui'
-import {
-  Sheet,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from '@boilerplate/ui'
-import { useSidebar } from '@boilerplate/ui'
 
 export function ConfigDrawer() {
   const { setOpen } = useSidebar()

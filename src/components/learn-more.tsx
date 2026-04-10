@@ -1,11 +1,11 @@
-import { CircleQuestionMark } from 'lucide-react'
-import { cn } from '@/lib/utils'
 import {
   Button,
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from '@boilerplate/ui'
+import { CircleQuestionMark } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 type LearnMoreProps = React.ComponentProps<typeof Popover> & {
   contentProps?: React.ComponentProps<typeof PopoverContent>

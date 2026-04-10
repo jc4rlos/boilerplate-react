@@ -19,7 +19,9 @@ export type PaginatedBranches = {
   total: number
 }
 
-export const getBranches = async (params: BranchesParams): Promise<PaginatedBranches> => {
+export const getBranches = async (
+  params: BranchesParams
+): Promise<PaginatedBranches> => {
   const { page, pageSize, name, isActive } = params
   const from = (page - 1) * pageSize
   const to = from + pageSize - 1
@@ -32,7 +34,8 @@ export const getBranches = async (params: BranchesParams): Promise<PaginatedBran
     .range(from, to)
 
   if (name) query = query.ilike('name', `%${name}%`)
-  if (isActive?.length === 1) query = query.eq('is_active', isActive[0] === 'true')
+  if (isActive?.length === 1)
+    query = query.eq('is_active', isActive[0] === 'true')
 
   const { data, error, count } = await query
   if (error) throw new Error(error.message)
@@ -51,7 +54,9 @@ export const getBranchById = async (id: number): Promise<Branch> => {
   return toBranch(data as DbBranch)
 }
 
-export const createBranch = async (values: BranchFormValues): Promise<Branch> => {
+export const createBranch = async (
+  values: BranchFormValues
+): Promise<Branch> => {
   const { data, error } = await supabase
     .from('branch')
     .insert(toDbInsert(values))
@@ -62,7 +67,10 @@ export const createBranch = async (values: BranchFormValues): Promise<Branch> =>
   return toBranch(data as DbBranch)
 }
 
-export const updateBranch = async (id: number, values: BranchFormValues): Promise<Branch> => {
+export const updateBranch = async (
+  id: number,
+  values: BranchFormValues
+): Promise<Branch> => {
   const { data, error } = await supabase
     .from('branch')
     .update(toDbUpdate(values))

@@ -11,10 +11,13 @@ export const Route = createFileRoute('/_authenticated')({
 
     const { auth } = useAuthStore.getState()
 
-    const isStoreValid = auth.accessToken && auth.user && auth.user.exp > Date.now()
+    const isStoreValid =
+      auth.accessToken && auth.user && auth.user.exp > Date.now()
     if (isStoreValid) return
 
-    const { data: { session } } = await supabase.auth.getSession()
+    const {
+      data: { session },
+    } = await supabase.auth.getSession()
 
     if (!session) throw redirect({ to: '/sign-in' })
 
