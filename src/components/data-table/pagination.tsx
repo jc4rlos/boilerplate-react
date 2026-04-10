@@ -5,8 +5,15 @@ import {
   DoubleArrowRightIcon,
 } from '@radix-ui/react-icons'
 import { type Table } from '@tanstack/react-table'
+import {
+  Button,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@boilerplate/ui'
 import { cn, getPageNumbers } from '@/lib/utils'
-import { Button, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@boilerplate/ui'
 
 type DataTablePaginationProps<TData> = {
   table: Table<TData>

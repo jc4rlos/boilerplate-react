@@ -1,8 +1,8 @@
-import { AlertTriangle } from 'lucide-react'
 import { Alert, AlertDescription, AlertTitle } from '@boilerplate/ui'
+import { AlertTriangle } from 'lucide-react'
 import { ConfirmDialog } from '@/components/confirm-dialog'
-import { useDeleteBranch } from '../hooks/use-branches'
 import { type Branch } from '../data/schema'
+import { useDeleteBranch } from '../hooks/use-branches'
 
 type BranchDeleteDialogProps = {
   open: boolean
@@ -10,7 +10,11 @@ type BranchDeleteDialogProps = {
   branch: Branch
 }
 
-export const BranchDeleteDialog = ({ open, onOpenChange, branch }: BranchDeleteDialogProps) => {
+export const BranchDeleteDialog = ({
+  open,
+  onOpenChange,
+  branch,
+}: BranchDeleteDialogProps) => {
   const deleteMutation = useDeleteBranch()
 
   const handleDelete = () => {
@@ -27,7 +31,10 @@ export const BranchDeleteDialog = ({ open, onOpenChange, branch }: BranchDeleteD
       disabled={deleteMutation.isPending}
       title={
         <span className='text-destructive'>
-          <AlertTriangle className='me-1 inline-block stroke-destructive' size={18} />
+          <AlertTriangle
+            className='me-1 inline-block stroke-destructive'
+            size={18}
+          />
           Eliminar Sucursal
         </span>
       }
@@ -35,11 +42,14 @@ export const BranchDeleteDialog = ({ open, onOpenChange, branch }: BranchDeleteD
         <div className='space-y-4'>
           <p>
             ¿Estás seguro de que deseas eliminar{' '}
-            <span className='font-bold'>{branch.name}</span>? Esta acción no se puede deshacer.
+            <span className='font-bold'>{branch.name}</span>? Esta acción no se
+            puede deshacer.
           </p>
           <Alert variant='destructive'>
             <AlertTitle>¡Advertencia!</AlertTitle>
-            <AlertDescription>Ten cuidado, esta operación no se puede revertir.</AlertDescription>
+            <AlertDescription>
+              Ten cuidado, esta operación no se puede revertir.
+            </AlertDescription>
           </Alert>
         </div>
       }

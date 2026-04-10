@@ -1,8 +1,15 @@
 import { useState, useEffect, useRef } from 'react'
 import { type Table } from '@tanstack/react-table'
+import {
+  Badge,
+  Button,
+  Separator,
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from '@boilerplate/ui'
 import { X } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Badge, Button, Separator, Tooltip, TooltipContent, TooltipTrigger } from '@boilerplate/ui'
 
 type DataTableBulkActionsProps<TData> = {
   table: Table<TData>

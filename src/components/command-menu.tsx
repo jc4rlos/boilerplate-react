@@ -1,10 +1,18 @@
 import React from 'react'
 import { useNavigate } from '@tanstack/react-router'
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+  ScrollArea,
+} from '@boilerplate/ui'
 import { ArrowRight, ChevronRight, Laptop, Moon, Sun } from 'lucide-react'
 import { useSearch } from '@/context/search-provider'
 import { useTheme } from '@/context/theme-provider'
-import { CommandDialog, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator, ScrollArea } from '@boilerplate/ui'
-
 import { sidebarData } from './layout/data/sidebar-data'
 
 export function CommandMenu() {

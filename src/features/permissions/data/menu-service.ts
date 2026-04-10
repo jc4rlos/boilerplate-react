@@ -1,5 +1,5 @@
-import { supabase } from '@/lib/supabase'
 import { type Database } from '@/lib/database.types'
+import { supabase } from '@/lib/supabase'
 
 type EmployeeRole = Database['public']['Enums']['employee_role']
 
@@ -51,13 +51,17 @@ const toMenuItem = (row: DbMenuItem): MenuItem => ({
   isActive: row.is_active,
 })
 
-export const getMenuItemsForRole = async (role: string): Promise<MenuItem[]> => {
+export const getMenuItemsForRole = async (
+  role: string
+): Promise<MenuItem[]> => {
   const { data, error } = await supabase
     .from('menu_item')
-    .select(`
+    .select(
+      `
       id, label, path, icon, parent_id, sort_order, is_active,
       menu_role_permission!inner(role, enabled)
-    `)
+    `
+    )
     .eq('is_active', true)
     .eq('menu_role_permission.role', role as EmployeeRole)
     .eq('menu_role_permission.enabled', true)
@@ -67,7 +71,9 @@ export const getMenuItemsForRole = async (role: string): Promise<MenuItem[]> => 
   return (data as DbMenuItem[]).map(toMenuItem)
 }
 
-export const getAllMenuItemsWithPermissions = async (): Promise<MenuItemWithPermissions[]> => {
+export const getAllMenuItemsWithPermissions = async (): Promise<
+  MenuItemWithPermissions[]
+> => {
   const { data: items, error: itemsError } = await supabase
     .from('menu_item')
     .select('id, label, path, icon, parent_id, sort_order, is_active')
@@ -99,9 +105,11 @@ export const upsertRolePermission = async (
   role: string,
   enabled: boolean
 ): Promise<void> => {
-  const { error } = await supabase.from('menu_role_permission').upsert(
-    { menu_item_id: menuItemId, role: role as EmployeeRole, enabled },
-    { onConflict: 'menu_item_id,role' }
-  )
+  const { error } = await supabase
+    .from('menu_role_permission')
+    .upsert(
+      { menu_item_id: menuItemId, role: role as EmployeeRole, enabled },
+      { onConflict: 'menu_item_id,role' }
+    )
   if (error) throw new Error(error.message)
 }

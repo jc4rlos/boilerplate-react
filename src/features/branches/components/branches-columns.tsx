@@ -1,13 +1,15 @@
 import { type ColumnDef } from '@tanstack/react-table'
+import { Checkbox } from '@boilerplate/ui'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Checkbox } from '@boilerplate/ui'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
 import { type Branch } from '../data/schema'
 import { BranchRowActions } from './branch-row-actions'
 
-export const createBranchColumns = (onDelete: (branch: Branch) => void): ColumnDef<Branch>[] => [
+export const createBranchColumns = (
+  onDelete: (branch: Branch) => void
+): ColumnDef<Branch>[] => [
   {
     id: 'select',
     header: ({ table }) => (
@@ -35,8 +37,12 @@ export const createBranchColumns = (onDelete: (branch: Branch) => void): ColumnD
   },
   {
     accessorKey: 'name',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Nombre' />,
-    cell: ({ row }) => <LongText className='max-w-48 ps-3'>{row.getValue('name')}</LongText>,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Nombre' />
+    ),
+    cell: ({ row }) => (
+      <LongText className='max-w-48 ps-3'>{row.getValue('name')}</LongText>
+    ),
     meta: {
       className: cn(
         'drop-shadow-[0_1px_2px_rgb(0_0_0_/_0.1)] dark:drop-shadow-[0_1px_2px_rgb(255_255_255_/_0.1)]',
@@ -47,14 +53,20 @@ export const createBranchColumns = (onDelete: (branch: Branch) => void): ColumnD
   },
   {
     accessorKey: 'address',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Dirección' />,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Dirección' />
+    ),
     cell: ({ row }) => (
-      <LongText className='max-w-64 text-muted-foreground'>{row.getValue('address')}</LongText>
+      <LongText className='max-w-64 text-muted-foreground'>
+        {row.getValue('address')}
+      </LongText>
     ),
   },
   {
     accessorKey: 'phone',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Teléfono' />,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Teléfono' />
+    ),
     cell: ({ row }) => {
       const phone = row.getValue('phone') as string | null
       return <span className='text-sm'>{phone ?? '—'}</span>
@@ -62,15 +74,21 @@ export const createBranchColumns = (onDelete: (branch: Branch) => void): ColumnD
   },
   {
     accessorKey: 'email',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Email' />,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Email' />
+    ),
     cell: ({ row }) => {
       const email = row.getValue('email') as string | null
-      return <span className='text-sm text-muted-foreground'>{email ?? '—'}</span>
+      return (
+        <span className='text-sm text-muted-foreground'>{email ?? '—'}</span>
+      )
     },
   },
   {
     accessorKey: 'isActive',
-    header: ({ column }) => <DataTableColumnHeader column={column} title='Estado' />,
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title='Estado' />
+    ),
     cell: ({ row }) => {
       const isActive = row.getValue('isActive') as boolean
       return isActive ? (
@@ -89,7 +107,9 @@ export const createBranchColumns = (onDelete: (branch: Branch) => void): ColumnD
   },
   {
     id: 'actions',
-    cell: ({ row }) => <BranchRowActions branch={row.original} onDelete={onDelete} />,
+    cell: ({ row }) => (
+      <BranchRowActions branch={row.original} onDelete={onDelete} />
+    ),
     meta: { className: 'w-10' },
   },
 ]

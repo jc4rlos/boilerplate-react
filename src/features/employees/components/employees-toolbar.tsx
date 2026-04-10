@@ -1,11 +1,14 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { type Table } from '@tanstack/react-table'
-import { Search } from 'lucide-react'
 import { Button, Input } from '@boilerplate/ui'
-
+import { Search } from 'lucide-react'
 import { DataTableFacetedFilter } from '@/components/data-table/faceted-filter'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
-import { employeeRoleLabels, employeeRoles, type Employee } from '../data/schema'
+import {
+  employeeRoleLabels,
+  employeeRoles,
+  type Employee,
+} from '../data/schema'
 
 type EmployeesToolbarProps = {
   table: Table<Employee>

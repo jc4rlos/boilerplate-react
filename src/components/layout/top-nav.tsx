@@ -1,7 +1,13 @@
 import { Link } from '@tanstack/react-router'
+import {
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@boilerplate/ui'
 import { Menu } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Button, DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@boilerplate/ui'
 
 type TopNavProps = React.HTMLAttributes<HTMLElement> & {
   links: {

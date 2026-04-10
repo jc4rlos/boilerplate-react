@@ -1,7 +1,7 @@
 import { Cross2Icon } from '@radix-ui/react-icons'
 import { type Table } from '@tanstack/react-table'
-import { Search } from 'lucide-react'
 import { Button, Input } from '@boilerplate/ui'
+import { Search } from 'lucide-react'
 import { DataTableFacetedFilter } from '@/components/data-table/faceted-filter'
 import { DataTableViewOptions } from '@/components/data-table/view-options'
 import { type Branch } from '../data/schema'
@@ -29,7 +29,9 @@ export const BranchesToolbar = ({
         <Input
           value={nameInput}
           onChange={(e) => onNameChange(e.target.value)}
-          onKeyDown={(e) => { if (e.key === 'Enter') onSearch() }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') onSearch()
+          }}
           placeholder='Filtrar sucursales...'
           className='h-8 w-37.5 lg:w-62.5'
         />

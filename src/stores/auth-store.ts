@@ -28,7 +28,11 @@ interface AuthState {
 
 const parseJson = <T>(value: string | undefined): T | null => {
   if (!value) return null
-  try { return JSON.parse(value) as T } catch { return null }
+  try {
+    return JSON.parse(value) as T
+  } catch {
+    return null
+  }
 }
 
 export const useAuthStore = create<AuthState>()((set) => {

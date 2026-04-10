@@ -2,10 +2,18 @@ import { useState } from 'react'
 import { z } from 'zod'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import {
+  Button,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+  Input,
+} from '@boilerplate/ui'
 import { IconFacebook, IconGithub } from '@/assets/brand-icons'
 import { cn } from '@/lib/utils'
-import { Button, Form, FormControl, FormField, FormItem, FormLabel, FormMessage, Input } from '@boilerplate/ui'
-
 import { PasswordInput } from '@/components/password-input'
 
 const formSchema = z

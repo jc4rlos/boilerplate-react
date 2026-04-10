@@ -1,7 +1,15 @@
 import { useState, type JSX } from 'react'
 import { useLocation, useNavigate, Link } from '@tanstack/react-router'
+import {
+  buttonVariants,
+  ScrollArea,
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@boilerplate/ui'
 import { cn } from '@/lib/utils'
-import { buttonVariants, ScrollArea, Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@boilerplate/ui'
 
 type SidebarNavProps = React.HTMLAttributes<HTMLElement> & {
   items: {

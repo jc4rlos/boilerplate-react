@@ -58,9 +58,7 @@ export const getEmployees = async (
     .range(from, to)
 
   if (search) {
-    query = query.or(
-      `first_name.ilike.%${search}%,last_name.ilike.%${search}%`
-    )
+    query = query.or(`first_name.ilike.%${search}%,last_name.ilike.%${search}%`)
   }
   if (role?.length) query = query.in('role', role as EmployeeRole[])
   if (isActive?.length === 1)

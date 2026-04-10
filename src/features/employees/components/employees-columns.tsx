@@ -1,7 +1,7 @@
 import { type ColumnDef } from '@tanstack/react-table'
+import { Checkbox } from '@boilerplate/ui'
 import { CheckCircle, XCircle } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { Checkbox } from '@boilerplate/ui'
 import { DataTableColumnHeader } from '@/components/data-table'
 import { LongText } from '@/components/long-text'
 import { type Employee, employeeRoleLabels } from '../data/schema'
