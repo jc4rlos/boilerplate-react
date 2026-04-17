@@ -1,3 +1,5 @@
+import './index.css'
+
 // Components
 export * from './components/alert'
 export * from './components/alert-dialog'
